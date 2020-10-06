@@ -43,6 +43,20 @@ elif [ ${ARCH:0:7} == "windows" ]; then
       .
 
     $MAKE -j$J CXX="$CXX" VERBOSE=1
+elif [ ${ARCH} == "linux_armv7l" ]; then
+    cmake \
+	-DEigen3_DIR=/usr/armv7a-unknown-linux-gnueabihf/usr/lib/cmake/eigen3 \
+        -DARCH=ice40 \
+        -DBUILD_HEAP=ON \
+        -DBUILD_GUI=OFF \
+        -DSTATIC_BUILD=ON \
+        -DICEBOX_ROOT=$PACKAGE_DIR/$NAME/share/icebox \
+        -DBoost_USE_STATIC_LIBS=ON \
+	-DBOOST_ROOT=/usr/armv7a-unknown-linux-gnueabihf/usr/ \
+	-DBOOST_LIBRARYDIR=/usr/armv7a-unknown-linux-gnueabihf/usr/lib \
+	-DBOOST_INCLUDEDIR=/usr/armv7a-unknown-linux-gnueabihf/usr/include \
+        .
+    make -j$J CXX="$CXX"
 else
     cmake \
         -DARCH=ice40 \

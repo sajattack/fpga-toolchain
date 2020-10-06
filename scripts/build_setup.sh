@@ -29,10 +29,11 @@ if [ $ARCH == "linux_i686" ]; then
 fi
 
 if [ $ARCH == "linux_armv7l" ]; then
-    export CC="arm-linux-gnueabihf-gcc"
-    export CXX="arm-linux-gnueabihf-g++"
-    export HOST_FLAGS="--host=arm-linux-gnueabihf"
+    export CC="armv7a-unknown-linux-gnueabihf-gcc"
+    export CXX="armv7a-unknown-linux-gnueabihf-g++"
+    export HOST_FLAGS="--host=armv7a-unknown-linux-gnueabihf"
     export ABC_ARCHFLAGS="-DLIN -DSIZEOF_VOID_P=4 -DSIZEOF_LONG=4 -DSIZEOF_INT=4"
+    export TOOLCHAIN_PREFIX="armv7a-unknown-linux-gnueabihf-"
 fi
 
 if [ $ARCH == "linux_aarch64" ]; then
